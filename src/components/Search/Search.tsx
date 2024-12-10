@@ -1,33 +1,28 @@
 "use client";
-import React, {useEffect} from "react";
+import React, { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // Hooks para navegação e acesso à query
 
 // React Hook Form
 import { useForm } from "react-hook-form";
 
 // Shadcn UI
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 // Icons
-import { Search as SearchIcon } from "lucide-react"; // Importe o icone de pesquisa {Search}
-
-type Props = {};
+import { Search as SearchIcon } from "lucide-react";
 
 type FormData = {
   product: string;
 };
 
-function Search({}: Props) {
+const SearchLabel = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || ""; // Obtém o valor atual da query ou vazio
@@ -87,6 +82,18 @@ function Search({}: Props) {
       </Form>
     </section>
   );
-}
+};
 
-export default Search;
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="w-full flex min-h-screen flex-col items-center justify-center">
+          <p>Carregando...</p>
+        </main>
+      }
+    >
+      <SearchLabel />
+    </Suspense>
+  );
+}

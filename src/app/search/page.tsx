@@ -1,7 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Services
 import getProducts from "@/api/mercadoLivreProducts";
@@ -9,8 +10,7 @@ import getProducts from "@/api/mercadoLivreProducts";
 // Components
 import RatingStars from "@/components/RatingStars/RatingStars";
 import Search from "@/components/Search/Search";
-
-// Icons
+import Loading from "@/components/Loading/Loading";
 
 type Product = {
   id: string;
@@ -21,7 +21,7 @@ type Product = {
   affiliate_link: string;
 };
 
-function SearchResults() {
+const SearchResults = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query");
   const [products, setProducts] = useState<Product[]>([]);
@@ -46,11 +46,26 @@ function SearchResults() {
   }, [query]);
 
   if (loading) {
-    return <p>Carregando resultados...</p>;
+    return (
+      <main className="w-full flex min-h-screen flex-col items-center justify-start">
+        <Search />
+        <div className="flex flex-col items-center justify-center">
+          <h4 className="mt-10">Carregando resultados...</h4>
+          <Loading size={50} color="#3498db" />
+        </div>
+      </main>
+    );
   }
 
   if (products.length === 0) {
-    return <p>Nenhum produto encontrado para "{query}"</p>;
+    return (
+      <main className="w-full flex min-h-screen flex-col items-center justify-start">
+        <Search />
+        <p className="mt-10">
+          Nenhum produto encontrado para &quot;{query}&quot;
+        </p>
+      </main>
+    );
   }
 
   return (
@@ -67,9 +82,11 @@ function SearchResults() {
               key={product.id}
               className="max-[813px]:w-[100%] w-[250px] max-[480px]:h-[250px] max-[813px]:h-[322px] border p-4 rounded bg-white"
             >
-              <img
+              <Image
                 src={product.thumbnail}
                 alt={product.title}
+                width={100}
+                height={0}
                 className="w-full max-[480px]:h-32 h-48 object-contain"
               />
               <h4 className="max-[480px]:text-sm text-md font-semibold text-gray-700 mt-2 line-clamp-2">
@@ -85,6 +102,14 @@ function SearchResults() {
       </div>
     </main>
   );
-}
+};
 
-export default SearchResults;
+const SearchPage = () => {
+  return (
+    <Suspense fallback={<Loading size={50} color="#3498db" />}>
+      <SearchResults />
+    </Suspense>
+  );
+};
+
+export default SearchPage;

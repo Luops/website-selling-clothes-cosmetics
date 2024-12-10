@@ -40,15 +40,6 @@ function Header() {
     },
   ];
 
-  // State para ver se foi clicado em alguma opção do Header
-  const handleNavigation = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   // Resolução da tela
   const [windowWidth, setWindowWidth] = React.useState(0);
   // Função para atualizar o state com a largura atual da janela em pixels
@@ -120,9 +111,7 @@ function Header() {
                 toggleAsideWidth();
               }}
             >
-              <button onClick={() => handleNavigation(el.key)}>
-                {el.name}
-              </button>
+              <Link href={el.url}>{el.name}</Link>
             </li>
           ))}
         </ul>

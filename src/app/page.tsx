@@ -1,4 +1,5 @@
 import { use } from "react";
+import Image from "next/image";
 
 // Services
 import getProducts from "@/api/mercadoLivreProducts";
@@ -27,7 +28,7 @@ export default function Home() {
         <div key={product.id}>
           <h1>{product.title}</h1>
           <p>{product.price}</p>
-          <img src={product.thumbnail} alt={product.title} />
+          <Image width={100} height={0} src={product.thumbnail} alt={product.title} />
           <a href={product.affiliate_link} target="_blank">
             Comprar
           </a>
