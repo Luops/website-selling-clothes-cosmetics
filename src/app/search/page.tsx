@@ -71,16 +71,16 @@ const SearchResults = () => {
   return (
     <main className="">
       <Search />
-      <div className="max-[480px]:px-2 p-4">
-        <h3 className="text-2xl font-bold">Resultados para: {query}</h3>
-        <div className="flex items-center justify-center max-[813px]:grid grid-cols-2 sm:grid-cols-2 lg:grid-cols- min-[814px]:flex-wrap max-[480px]:gap-2 gap-4">
+      <div className="max-[480px]:px-2 max-[480px]:p-0 max-[1024px]:p-4 p-6 px-10">
+        <h3 className="w-full text-2xl font-bold min-[1024px]:pl-16">Resultados para: {query}</h3>
+        <div className="flex items-center justify-center max-[813px]:grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 min-[814px]:flex-wrap max-[480px]:gap-2 gap-4">
           {products.map((product) => (
             <Link
               href={product.permalink}
               target="_blank"
               rel="noopener noreferrer"
               key={product.id}
-              className="max-[813px]:w-[100%] w-[250px] max-[480px]:h-[250px] max-[813px]:h-[322px] border p-4 rounded bg-white"
+              className="max-[813px]:w-[100%] w-[250px] max-[480px]:h-[250px] h-[322px] border p-4 rounded bg-white"
             >
               <Image
                 src={product.thumbnail}
