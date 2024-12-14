@@ -65,24 +65,6 @@ export default function Home() {
         </div>
       ) : (
         <>
-          {/* 
-          <section>
-            {products.map((product) => (
-              <div key={product.id}>
-                <h1>{product.title}</h1>
-                <p>{product.price}</p>
-                <Image
-                  width={100}
-                  height={0}
-                  src={product.thumbnail}
-                  alt={product.title}
-                />
-                <a href={product.affiliate_link} target="_blank">
-                  Comprar
-                </a>
-              </div>
-            ))}
-          </section>*/}
           <section className="w-full flex">
             {/*Filtrar os produtos */}
             <aside className="bg-white w-1/5">
@@ -128,6 +110,23 @@ export default function Home() {
               </Form>
             </aside>
             <div></div>
+          </section>
+          <section>
+            {products.map((product) => (
+              <div key={product.id}>
+                <h1>{product.title}</h1>
+                <p>{product.price}</p>
+                <Image
+                  width={100}
+                  height={0}
+                  src={product.thumbnail}
+                  alt={product.title}
+                />
+                <a href={product.affiliate_link} target="_blank">
+                  Comprar
+                </a>
+              </div>
+            ))}
           </section>
         </>
       )}
