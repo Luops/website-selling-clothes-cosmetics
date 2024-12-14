@@ -35,7 +35,9 @@ const SearchLabel = () => {
 
   useEffect(() => {
     // Atualiza o valor do campo caso a query mude
-    form.setValue("product", query);
+    if (form.getValues("product") !== query) {
+      form.setValue("product", query);
+    }
   }, [query, form]);
 
   // Função de busca
@@ -63,7 +65,9 @@ const SearchLabel = () => {
                   <Input
                     placeholder="Pesquise o produto que deseja comprar"
                     {...field}
-                    className="py-8 border-none shadow-none focus-visible:ring-0 max-[480px]:text-sm"
+                    value={field.value || ""}
+                    onChange={(e) => form.setValue("product", e.target.value)}
+                    className="py-4 border-none shadow-none focus-visible:ring-0 max-[480px]:text-sm"
                   />
                 </FormControl>
                 <FormMessage />
@@ -71,7 +75,7 @@ const SearchLabel = () => {
                 {/* Botão para submeter */}
                 <button
                   type="submit"
-                  className="!h-fit p-2 bg-transparent hover:bg-transparent shadow-none"
+                  className="!h-fit p-2 bg-transparent hover:bg-transparent shadow-none !mt-0"
                 >
                   <SearchIcon size={32} className="text-black" />
                 </button>

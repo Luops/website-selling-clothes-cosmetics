@@ -65,7 +65,7 @@ function Header() {
     };
   }, []);
   return (
-    <header className="w-full flex z-50 sticky top-0 bg-primaryBlue bg-[#101D3B] text-white flex-row items-center py-6 justify-between">
+    <header className="w-full flex z-50 sticky top-0 bg-primaryBlue bg-[#101D3B] text-white flex-row items-center py-4 justify-between">
       <h2 className="w-28 ml-14">Busque</h2>
       {/*Desktop*/}
       <nav className={`max-[860px]:hidden`}>
