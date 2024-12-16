@@ -6,7 +6,6 @@ import Image from "next/image";
 import getProducts from "@/api/mercadoLivreProducts";
 
 // Components
-import Search from "../components/Search/Search";
 import Loading from "@/components/Loading/Loading";
 
 // React Hook Form
@@ -56,8 +55,7 @@ export default function Home() {
     defaultValues: {},
   });
   return (
-    <main className="relative w-full flex min-h-screen flex-col items-center justify-start bg-[#f3f3f3]">
-      <Search />
+    <main className="relative w-full flex min-h-screen flex-col items-center justify-start">
       {loading ? (
         <div className="fixed flex flex-col h-screen text-center items-center justify-center">
           <h4 className="">Carregando...</h4>

@@ -6,7 +6,6 @@ import { useEffect, useState, Suspense } from "react";
 import getProducts from "@/api/mercadoLivreProducts";
 
 // Components
-import Search from "@/components/Search/Search";
 import Loading from "@/components/Loading/Loading";
 import SearchProduct from "@/components/ProductsComponent/SearchProduct";
 
@@ -46,7 +45,6 @@ const SearchResults = () => {
   if (loading) {
     return (
       <main className="w-full flex min-h-screen flex-col items-center justify-start">
-        <Search />
         <div className="flex flex-col items-center justify-center">
           <h4 className="mt-10">Carregando resultados...</h4>
           <Loading size={50} color="#3498db" />
@@ -58,7 +56,6 @@ const SearchResults = () => {
   if (products.length === 0) {
     return (
       <main className="w-full flex min-h-screen flex-col items-center justify-start">
-        <Search />
         <p className="mt-10">
           Nenhum produto encontrado para &quot;{query}&quot;
         </p>
@@ -68,7 +65,6 @@ const SearchResults = () => {
 
   return (
     <main className="">
-      <Search />
       <div className="max-[480px]:px-2 max-[480px]:p-0 max-[1024px]:p-4 p-6 px-10">
         <h3 className="w-full text-2xl font-bold min-[1024px]:pl-16">
           Resultados para: {query}

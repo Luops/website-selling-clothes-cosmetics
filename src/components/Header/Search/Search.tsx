@@ -49,7 +49,7 @@ const SearchLabel = () => {
     }
   };
   return (
-    <section className="w-full flex items-center justify-center py-6 max-[480px]:px-2 px-4 bg-white">
+    <section className="max-[860px]:w-full max-[860px]:mr-10 max-[1440px]:w-[200px] w-[300px] flex items-center justify-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleSearch)}
@@ -60,10 +60,10 @@ const SearchLabel = () => {
             control={form.control} // Configurando o contexto de formulário
             name="product"
             render={({ field }) => (
-              <FormItem className="w-full flex items-center justify-between border px-3">
+              <FormItem className="w-full flex items-center justify-between border-b">
                 <FormControl>
                   <Input
-                    placeholder="Pesquise o produto que deseja comprar"
+                    placeholder="Pesquise aqui"
                     {...field}
                     value={field.value || ""}
                     onChange={(e) => form.setValue("product", e.target.value)}
@@ -77,7 +77,7 @@ const SearchLabel = () => {
                   type="submit"
                   className="!h-fit p-2 bg-transparent hover:bg-transparent shadow-none !mt-0"
                 >
-                  <SearchIcon size={32} className="text-black" />
+                  <SearchIcon size={24} className="text-black hover:text-gray-500 transition-all ease-in-out duration-300" />
                 </button>
               </FormItem>
             )}
