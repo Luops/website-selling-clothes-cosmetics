@@ -11,5 +11,5 @@ export interface Product extends BaseEntity{
   price: number;
   description: string;
   imagePath: string;
-  userId?: number;
+  userId?: string;
 }
