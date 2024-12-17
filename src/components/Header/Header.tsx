@@ -78,7 +78,7 @@ function Header() {
         </h4>
       </div>
       <div className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12">
-        <div className="w-full flex flex-row items-center justify-between py-5 px-4 border border-[#dadada]">
+        <div className="w-full flex flex-row items-center justify-between py-2 px-4 border border-[#dadada]">
           <h2 className="font-bold text-2xl w-28">LOGO</h2>
           {/*Desktop*/}
           <nav className={`max-[860px]:hidden max-[1440px]:-mr-[7%] -mr-[9%]`}>
@@ -98,7 +98,7 @@ function Header() {
           <nav className="hidden max-[860px]:block">
             <button
               onClick={toggleAsideWidth}
-              className={`top-[76px] right-6 ${
+              className={`top-[68px] right-6 ${
                 windowWidth < 861
                   ? isWideAside
                     ? "fixed h-screen text-xl z-[51]"

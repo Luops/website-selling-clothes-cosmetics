@@ -7,6 +7,7 @@ import getProducts from "@/api/mercadoLivreProducts";
 
 // Components
 import Loading from "@/components/Loading/Loading";
+import FeaturedSection from "@/components/FeaturedSection/FeaturedSection";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
@@ -63,6 +64,7 @@ export default function Home() {
         </div>
       ) : (
         <>
+          <FeaturedSection />
           <section className="w-full flex">
             {/*Filtrar os produtos */}
             <aside className="bg-white w-1/5">
