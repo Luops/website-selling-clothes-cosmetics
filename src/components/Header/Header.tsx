@@ -12,10 +12,19 @@ import { Menu, X, Truck } from "lucide-react";
 
 // Components
 import Search from "./Search/Search";
+import { signOut, useSession } from "next-auth/react";
 
 function Header() {
   // Abrir e fechar o aside
   const [isWideAside, setIsWideAside] = React.useState(false);
+
+  //Variáveis que retornam os dados do usuário e sessão se houver
+  const { data, status } = useSession();
+
+  const handleLogout = () => {
+    signOut();
+  }
+
   // Função para abrir e fechar o aside
   const toggleAsideWidth = () => {
     setIsWideAside(!isWideAside);
@@ -70,11 +79,16 @@ function Header() {
   return (
     <header className="w-full flex z-50 sticky top-0 flex-col items-center pb-4 justify-between gap-5 bg-white">
       <div className="w-full flex items-center justify-between bg-[#010101] text-white px-4 py-2">
-        <h4 className="flex gap-1 max-[480px]:text-[0.6rem] text-xs text-gray-200">
-          <i>
-            <Truck size={16} />
-          </i>
-          Entrega grátis para compras apartir de R$ 199,00
+        <h4 className="flex w-full gap-1 flex-row justify-between max-[480px]:text-[0.6rem] text-xs text-gray-200">
+          <div className="flex flex-row gap-1">
+            <i>
+              <Truck size={16} />
+            </i>
+            Entrega grátis para compras apartir de R$ 199,00
+          </div>
+          {status === "authenticated" && data !== null && (
+            <div className="flex flex-row gap-1"><p>{data.user?.name}</p> <button className="p-0 m-0 border-none text-blue-400" onClick={handleLogout}>Logout</button></div>
+          )}
         </h4>
       </div>
       <div className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12">

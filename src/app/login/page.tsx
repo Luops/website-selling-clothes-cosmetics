@@ -13,7 +13,14 @@ function page() {
       email: email,
       password: password,
       redirect: false,
-    });
+    }).then(res => {
+      if(res?.error){
+        console.log(res?.error)
+      }
+      else{
+        window.location.replace("/");
+      }
+    }) 
   }
   return (
     <div>

@@ -4,6 +4,7 @@ import "./globals.css";
 
 // Components
 import Header from "../components/Header/Header";
+import NextAuthSessionProvider from "@/components/NextAuthSessionProvider/NextAuthSessionProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,13 +28,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <Header />
-        {children}
-      </body>
-    </html>
+      <NextAuthSessionProvider>
+
+      <html lang="pt-br">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+          <Header />
+          {children}
+        </body>
+      </html>
+          </NextAuthSessionProvider>
   );
 }
