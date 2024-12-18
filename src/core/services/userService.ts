@@ -1,7 +1,8 @@
+import { User } from "@supabase/supabase-js";
 import { supabase } from "../utils/supabase";
 
 export class UserService {
-  async signUp(
+  static async register(
     email: string,
     password: string,
     phone: string
@@ -10,5 +11,18 @@ export class UserService {
       .signUp({ email: email, password: password, phone: phone })
       .then(() => true)
       .catch(() => console.log("Um erro ocorreu!"));
+  }
+
+  static async login(email: string, password: string): Promise<User>{
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    });
+
+    if(error){
+      throw new Error(error.message);
+    }
+
+    return data.user;
   }
 }
