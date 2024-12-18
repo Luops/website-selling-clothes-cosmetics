@@ -8,6 +8,7 @@ import getProducts from "@/api/mercadoLivreProducts";
 // Components
 import Loading from "@/components/Loading/Loading";
 import FeaturedSection from "@/components/FeaturedSection/FeaturedSection";
+import PromoSection from "@/components/PromoSection/PromoSection";
 
 // React Hook Form
 import { useForm } from "react-hook-form";
@@ -56,7 +57,7 @@ export default function Home() {
     defaultValues: {},
   });
   return (
-    <main className="relative w-full flex min-h-screen flex-col items-center justify-start">
+    <main className="relative w-full flex min-h-screen flex-col items-center justify-start gap-10">
       {loading ? (
         <div className="fixed flex flex-col h-screen text-center items-center justify-center">
           <h4 className="">Carregando...</h4>
@@ -65,6 +66,7 @@ export default function Home() {
       ) : (
         <>
           <FeaturedSection />
+          <PromoSection />
           <section className="w-full flex">
             {/*Filtrar os produtos */}
             <aside className="bg-white w-1/5">

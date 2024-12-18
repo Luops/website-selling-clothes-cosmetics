@@ -28,16 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <NextAuthSessionProvider>
-
+    <NextAuthSessionProvider>
       <html lang="pt-br">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
+        >
           <Header />
           {children}
         </body>
       </html>
-          </NextAuthSessionProvider>
+    </NextAuthSessionProvider>
   );
 }

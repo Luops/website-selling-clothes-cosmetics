@@ -4,6 +4,7 @@ import React from "react";
 
 // Next
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 // Images
 
@@ -12,7 +13,6 @@ import { Menu, X, Truck } from "lucide-react";
 
 // Components
 import Search from "./Search/Search";
-import { signOut, useSession } from "next-auth/react";
 
 function Header() {
   // Abrir e fechar o aside
