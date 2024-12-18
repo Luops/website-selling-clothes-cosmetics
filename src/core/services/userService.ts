@@ -1,4 +1,4 @@
-import { User } from "@supabase/supabase-js";
+import { Session, User } from "@supabase/supabase-js";
 import { supabase } from "../utils/supabase";
 
 export class UserService {
@@ -13,7 +13,7 @@ export class UserService {
       .catch(() => console.log("Um erro ocorreu!"));
   }
 
-  static async login(email: string, password: string): Promise<User>{
+  static async login(email: string, password: string): Promise<{user: User, session: Session}>{
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email,
       password: password,
@@ -23,6 +23,6 @@ export class UserService {
       throw new Error(error.message);
     }
 
-    return data.user;
+    return data;
   }
 }

@@ -13,16 +13,22 @@ import { Menu, X, Truck } from "lucide-react";
 
 // Components
 import Search from "./Search/Search";
+import { useRouter } from "next/navigation";
 
 function Header() {
   // Abrir e fechar o aside
   const [isWideAside, setIsWideAside] = React.useState(false);
+  const navigator = useRouter();
 
   //Variáveis que retornam os dados do usuário e sessão se houver
   const { data, status } = useSession();
 
   const handleLogout = () => {
     signOut();
+  }
+
+  const handleLogin = () => {
+    navigator.replace("/login")
   }
 
   // Função para abrir e fechar o aside
@@ -86,9 +92,9 @@ function Header() {
             </i>
             Entrega grátis para compras apartir de R$ 199,00
           </div>
-          {status === "authenticated" && data !== null && (
+          {status === "authenticated" && data !== null ? (
             <div className="flex flex-row gap-1"><p>{data.user?.name}</p> <button className="p-0 m-0 border-none text-blue-400" onClick={handleLogout}>Logout</button></div>
-          )}
+          ) : (<button className="p-0 m-0 border-none text-blue-400" onClick={handleLogin}>Login</button>)}
         </h4>
       </div>
       <div className="w-full max-[480px]:px-2 max-[860px]:px-4 px-12">

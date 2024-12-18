@@ -14,8 +14,9 @@ export const authOptions: AuthOptions = {
           const result = await UserService.login(credentials!.email, credentials!.password)
             
           return {
-            id: result.id,
-            name: result.email
+            id: result.user.id,
+            name: result.user.email,
+            accessToken: result.session.access_token
           }
         }
     }),
