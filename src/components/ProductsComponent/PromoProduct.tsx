@@ -31,7 +31,7 @@ function PromoProduct({ product }: { product: Product }) {
           height={0}
           className="w-full max-[1440px]:h-48 h-56 object-contain"
         />
-        <h4 className="max-[480px]:text-sm text-md font-semibold text-gray-700 mt-2 line-clamp-2">
+        <h4 className="max-[480px]:text-sm text-md text-gray-700 mt-2 line-clamp-2">
           {product.title}
         </h4>
       </div>
